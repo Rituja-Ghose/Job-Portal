@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./components/shared/Navbar";
+import Navbar from "./components/shared/Navbar"; // Corrected path
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import React from "react";
@@ -26,13 +26,31 @@ import Templates from "./components/resumeBuilder/pages/Templates";
 import Resume from "./components/resumeBuilder/pages/Resume";
 import JobSetup from "./components/admin/JobSetup";
 
-const routes = [
-  { path: "/", element: <Home /> },
-  { path: "/login", element: <Login /> },
-  { path: "/signup", element: <Signup /> },
-  { path: "/jobs", element: <Jobs /> },
-  { path: "/description/:id", element: <JobDescription /> },
-  { path: "/browse", element: <Browse /> },
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/jobs",
+    element: <Jobs />,
+  },
+  {
+    path: "/description/:id",
+    element: <JobDescription />,
+  },
+  {
+    path: "/browse",
+    element: <Browse />,
+  },
   {
     path: "/profile",
     element: (
@@ -41,7 +59,7 @@ const routes = [
       </ProtectedRoute>
     ),
   },
-  // admin
+  // admin paths
   {
     path: "/admin/companies",
     element: (
@@ -98,21 +116,40 @@ const routes = [
       </ProtectedRoute>
     ),
   },
-  // resume builder
-  { path: "/:userId/resumebuilder/home", element: <ResumeHome /> },
-  { path: "/:userId/resumebuilder/edit/personal-info", element: <ResumeProfile /> },
-  { path: "/:userId/resumebuilder/edit/education-info", element: <ResumeEducation /> },
-  { path: "/:userId/resumebuilder/edit/projects-info", element: <ResumeProjects /> },
-  { path: "/:userId/resumebuilder/edit/experience-info", element: <ResumeExperience /> },
-  { path: "/:userId/resumebuilder/edit/extra-info", element: <ResumeExtraDetails /> },
-  { path: "/:userId/resumebuilder/templates", element: <Templates /> },
-  { path: "/:userId/resumebuilder/templates/:templateNumber", element: <Resume /> },
-];
-
-// ✅ Add basename here
-const router = createBrowserRouter(routes, {
-  basename: import.meta.env.VITE_BASENAME || "/",
-});
+  //resume builder paths
+  {
+    path: "/:userId/resumebuilder/home",
+    element: <ResumeHome />,
+  },
+  {
+    path: "/:userId/resumebuilder/edit/personal-info",
+    element: <ResumeProfile />,
+  },
+  {
+    path: "/:userId/resumebuilder/edit/education-info",
+    element: <ResumeEducation />,
+  },
+  {
+    path: "/:userId/resumebuilder/edit/projects-info",
+    element: <ResumeProjects />,
+  },
+  {
+    path: "/:userId/resumebuilder/edit/experience-info",
+    element: <ResumeExperience />,
+  },
+  {
+    path: "/:userId/resumebuilder/edit/extra-info",
+    element: <ResumeExtraDetails />,
+  },
+  {
+    path: "/:userId/resumebuilder/templates",
+    element: <Templates />,
+  },
+  {
+    path: "/:userId/resumebuilder/templates/:templateNumber",
+    element: <Resume />,
+  },
+]);
 
 function App() {
   return (

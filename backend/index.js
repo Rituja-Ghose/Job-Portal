@@ -17,26 +17,10 @@ dotenv.config({});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-// ✅ Handle multiple frontend origins
-const allowedOrigins = process.env.FRONTEND_URLS?.split(",") || [];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin (e.g. mobile apps, curl)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      } else {
-        return callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
-
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
 const port = process.env.PORT || 3000;
 
 connectDB();
