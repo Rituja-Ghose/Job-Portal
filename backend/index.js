@@ -17,12 +17,10 @@ dotenv.config({});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const corsOptions = {
+app.use(cors({
   origin: process.env.FRONTEND_URL,
-  credentials: true,
-};
-app.use(cors(corsOptions));
-
+  credentials: true
+}));
 const port = process.env.PORT || 3000;
 
 connectDB();

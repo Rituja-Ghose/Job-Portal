@@ -27,7 +27,7 @@ function Login() {
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
-
+  // console.log("Login Input:", input);
   const submitHandler = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
@@ -132,7 +132,7 @@ function Login() {
           <span className="text-sm">
             Don't have an account?{" "}
             <Link to="/signup" className="text-blue-600">
-              Login
+              Signup
             </Link>
           </span>
         </form>
